@@ -4,6 +4,15 @@ import plotly.express as px
 
 car_data = pd.read_csv('vehicles.csv')
 
+# Cabeçalho
+st.title('Análise de Dados de Anúncios de Carros')
+
+# Descrição do Trabalho
+st.markdown("""
+Este aplicativo web realiza uma análise exploratória de dados em um conjunto de dados com anúncios de carros.
+Explore visualizações interativas para entender padrões e tendências nos dados.
+""")
+
 # Criando botões
 hist_button = st.button('Criar histograma')
 scatter_button = st.button('Criar gráfico de dispersão')
