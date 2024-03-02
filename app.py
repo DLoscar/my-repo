@@ -1,18 +1,37 @@
+import streamlit as st
 import pandas as pd
 import plotly.express as px
-import streamlit as st
 
-car_data = pd.read_csv('vehicles.csv') # lendo os dados
-hist_button = st.button('Criar histograma') # criar um botão
+car_data = pd.read_csv('vehicles.csv')
 
-if hist_button: # se o botão for clicado
-    # escrever uma mensagem
+# Criando botões
+hist_button = st.button('Criar histograma')
+scatter_button = st.button('Criar gráfico de dispersão')
+if hist_button:
     st.write('Criando um histograma para o conjunto de dados de anúncios de vendas de carros')
-    
-    # criar um histograma
-    fig = px.histogram(car_data, x="odometer")
+    fig_hist = px.histogram(car_data, x="odometer")
+    st.plotly_chart(fig_hist, use_container_width=True)
 
-    # exibir um gráfico Plotly interativo
-    st.plotly_chart(fig, use_container_width=True)
+# Se o botão de gráfico de dispersão for clicado
+if scatter_button:
+    st.write('Criando um gráfico de dispersão para o conjunto de dados de anúncios de vendas de carros')
+    fig_scatter = px.scatter(car_data, x="ano", y="preco", color="tipo_combustivel")
+    st.plotly_chart(fig_scatter, use_container_width=True)
+
+# Criando caixas de seleção
+build_hist = st.checkbox('Criar histograma')
+build_scatter = st.checkbox('Criar gráfico de dispersão')
+
+# Se a caixa de seleção de histograma estiver marcada
+if build_hist:
+    st.write('Criando um histograma para a coluna odometer')
+    fig_hist = px.histogram(car_data, x="odometer")
+    st.plotly_chart(fig_hist, use_container_width=True)
+
+# Se a caixa de seleção de gráfico de dispersão estiver marcada
+if build_scatter:
+    st.write('Criando um gráfico de dispersão para a coluna ano em relação ao preço')
+    fig_scatter = px.scatter(car_data, x="ano", y="preco", color="tipo_combustivel")
+    st.plotly_chart(fig_scatter, use_container_width=True)
 
 
