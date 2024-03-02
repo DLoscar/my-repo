@@ -15,7 +15,7 @@ if hist_button:
 # Se o botão de gráfico de dispersão for clicado
 if scatter_button:
     st.write('Criando um gráfico de dispersão para o conjunto de dados de anúncios de vendas de carros')
-    fig_scatter = px.scatter(car_data, x="ano", y="preco", color="tipo_combustivel")
+    fig_scatter = px.scatter(car_data, x="model_year", y="price", color="fuel")
     st.plotly_chart(fig_scatter, use_container_width=True)
 
 # Criando caixas de seleção
@@ -31,7 +31,7 @@ if build_hist:
 # Se a caixa de seleção de gráfico de dispersão estiver marcada
 if build_scatter:
     st.write('Criando um gráfico de dispersão para a coluna ano em relação ao preço')
-    fig_scatter = px.scatter(car_data, x="ano", y="preco", color="tipo_combustivel")
+    fig_scatter = px.scatter(car_data, x="model_year", y="price", color="fuel")
     st.plotly_chart(fig_scatter, use_container_width=True)
 
 
